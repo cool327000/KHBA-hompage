@@ -24,7 +24,10 @@ document.addEventListener('DOMContentLoaded',()=>{
     let day=i-start+1, date, muted=false;
     if(day<1){date=new Date(y,m-1,prevLast+day);muted=true}else if(day>last){date=new Date(y,m+1,day-last);muted=true}else date=new Date(y,m,day);
     const b=document.createElement('button'); b.type='button'; b.textContent=date.getDate(); if(muted)b.className='muted-day';
-    if(date.toDateString()===selected.toDateString())b.classList.add('selected');
+    const isToday=date.toDateString()===today.toDateString();
+    const isSelected=date.toDateString()===selected.toDateString();
+    if(isToday)b.classList.add('today');
+    if(isSelected)b.classList.add('selected');
     b.addEventListener('click',()=>{selected=new Date(date);updateSelectedLabel();view=new Date(selected.getFullYear(),selected.getMonth(),1);renderCalendar();});
     daysEl.appendChild(b);
    }
