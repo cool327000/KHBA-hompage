@@ -12,9 +12,11 @@ document.addEventListener('DOMContentLoaded',()=>{
  const monthEl=document.getElementById('calendarMonth');
  const selectedEl=document.getElementById('selectedDate');
  if(dateButton&&popup&&daysEl&&monthEl&&selectedEl){
-  let view=new Date(2026,7,1), selected=new Date(2026,7,16);
+  const today=new Date();
+  let view=new Date(today.getFullYear(),today.getMonth(),1), selected=new Date(today.getFullYear(),today.getMonth(),today.getDate());
   const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
   const weekdays=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  function updateSelectedLabel(){selectedEl.textContent=`${weekdays[selected.getDay()]} ${months[selected.getMonth()].slice(0,3)} ${selected.getDate()}`;}
   function renderCalendar(){
    const y=view.getFullYear(),m=view.getMonth(); monthEl.textContent=months[m]; daysEl.innerHTML='';
    const first=new Date(y,m,1), start=first.getDay(), last=new Date(y,m+1,0).getDate(), prevLast=new Date(y,m,0).getDate();
@@ -23,10 +25,11 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(day<1){date=new Date(y,m-1,prevLast+day);muted=true}else if(day>last){date=new Date(y,m+1,day-last);muted=true}else date=new Date(y,m,day);
     const b=document.createElement('button'); b.type='button'; b.textContent=date.getDate(); if(muted)b.className='muted-day';
     if(date.toDateString()===selected.toDateString())b.classList.add('selected');
-    b.addEventListener('click',()=>{selected=new Date(date);selectedEl.textContent=`${weekdays[selected.getDay()]} ${months[selected.getMonth()].slice(0,3)} ${selected.getDate()}`;view=new Date(selected.getFullYear(),selected.getMonth(),1);renderCalendar();});
+    b.addEventListener('click',()=>{selected=new Date(date);updateSelectedLabel();view=new Date(selected.getFullYear(),selected.getMonth(),1);renderCalendar();});
     daysEl.appendChild(b);
    }
   }
+  updateSelectedLabel();
   dateButton.addEventListener('click',e=>{e.stopPropagation();const hidden=popup.getAttribute('aria-hidden')==='true';popup.setAttribute('aria-hidden',String(!hidden));if(hidden)renderCalendar();});
   document.getElementById('prevMonth').addEventListener('click',()=>{view.setMonth(view.getMonth()-1);renderCalendar()});
   document.getElementById('nextMonth').addEventListener('click',()=>{view.setMonth(view.getMonth()+1);renderCalendar()});
