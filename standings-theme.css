@@ -28,8 +28,8 @@
 .full-standings td:nth-child(3){font-weight:900;color:#b3363b}
 .full-standings td:nth-child(4){font-weight:900}
 .full-standings tbody tr:not(:last-child) td{border-bottom:1px solid #edf0f2}
-/* Give NEXT GAME the same edge breathing room as GRAPEFRUIT by tightening the stat columns. */
-.full-standings th:first-child,.full-standings td:first-child{width:20%}
+/* Balance both outer columns while opening the space between the stat columns. */
+.full-standings th:first-child,.full-standings td:first-child{width:18%}
 .full-standings th:last-child,.full-standings td:last-child{width:7%;padding-right:24px}
-.full-standings th:not(:first-child):not(:last-child),.full-standings td:not(:first-child):not(:last-child){width:4.867%}
+.full-standings th:not(:first-child):not(:last-child),.full-standings td:not(:first-child):not(:last-child){width:5.0%}
 @media(max-width:800px){.standings-page{padding:24px 0 45px}.standings-title{padding:22px 20px 0;border-radius:10px 10px 0 0}.standings-heading{align-items:flex-start}.standings-title h1{font-size:34px}.standings-tab{padding-right:16px;padding-left:16px}.standings-scroll{border-radius:0 0 10px 10px}.full-standings th:first-child,.full-standings td:first-child{padding-left:18px}.full-standings th:last-child,.full-standings td:last-child{padding-right:18px}}
