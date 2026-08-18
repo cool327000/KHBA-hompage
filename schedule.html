@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Schedule | KHBA</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="topbar"><div class="container nav-wrap"><a class="brand" href="index.html"><span class="brand-mark">K</span><span>KHBA</span></a><nav class="nav"><a href="index.html">HOME</a><a class="active" href="scores.html">SCORES</a><a href="standings.html">STANDINGS</a><a href="news.html">NEWS</a><a href="teams.html">TEAMS</a></nav></div></header>
+<main class="section scores-page"><div class="container"><div class="scores-tabs"><a class="scores-tab" href="scores.html">Scores</a><a class="scores-tab active" href="schedule.html">Schedule</a></div><div class="scores-tab-line"></div><section class="schedule-content"><h1>Schedule</h1><div id="scheduleGrid" class="games-grid"></div></section></div></main>
+<script src="script.js"></script>
+<script>document.addEventListener('DOMContentLoaded',()=>{const el=document.getElementById('scheduleGrid');if(!el)return;const list=typeof games!=='undefined'?games:[];el.innerHTML=list.map(g=>`<article class="game-card"><div class="date">${g[0]} · 2026</div><div class="game-teams"><div><b>${g[1]}</b><small>HOME</small></div><div class="score"><span style="font-size:13px;color:#777">vs.</span></div><div><b>${g[2]}</b><small>AWAY</small></div></div><div class="status">${g[5]||'SCHEDULED'} · KHBA REGULAR SEASON</div></article>`).join('')||'<p>No games scheduled.</p>'});</script>
+</body></html>
