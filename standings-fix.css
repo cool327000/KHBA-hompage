@@ -1,0 +1,4 @@
+/* Slim S1 dropdown arrow */
+.standings-filters button span{float:none;display:inline-block;position:absolute;right:9px;top:50%;width:8px;height:8px;margin:0;transform:translateY(-56%)}
+.standings-filters button{position:relative;padding-right:22px}
+.standings-filters button span:after{content:'';position:absolute;left:0;top:0;width:6px;height:6px;border-right:1px solid #1f2832;border-bottom:1px solid #1f2832;transform:rotate(45deg);font-size:0;line-height:0;font-weight:400}
